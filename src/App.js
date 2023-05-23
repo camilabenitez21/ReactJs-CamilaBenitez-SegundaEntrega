@@ -1,36 +1,34 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
-import ItemListContainer from './components/ItemListContainer';
-import MiNavbar from './components/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Pagination from './components/Pagination';
+import { Routes, Route } from 'react-router-dom';
+import MiNavBar from "./components/NavBar"
+import Pagination from "./components/Pagination"
+import CartWidget from './components/CartWidget';
+import Home from './components/Home';
+import CategoriaRopa from './components/CategoriaRopa';
+import CategoriaZapatos from './components/CategoriaZapatos';
+import CategoriaAccesorios from './components/CategoriaAccesorios';
+import Ofertas from './components/Ofertas';
+import Nosotros from './components/Nosotros';
+import Contacto from './components/Contacto';
 
-function App() {
-  const [itemListContainers, setItemListContainers] = useState([]);
-
-  const url = "https://rickandmortyapi.com/api/character";
-
-  const fetchItemListContainers = (url) => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => setItemListContainers(data.results))
-      .catch(error => console.log(error));
-  };
-
-  useEffect(() => {
-    fetchItemListContainers(url);
-  }, []);
+const App = () => {
 
   return (
-    <div className="text-center"> 
-      <MiNavbar />
-      <h1 className="text-muted mt-5">Bienvenidos a Candelitte Clothing</h1> 
-      <p className="text-secondary">No puede dejar de aprovechar las ofertas imperdibles.</p> 
-      <div className='container mt-5'>
-        <ItemListContainer itemList={itemListContainers}></ItemListContainer>
-        <Pagination></Pagination>
-      </div>
-    </div>
+    <>
+      <MiNavBar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ropa" element={<CategoriaRopa />} />
+        <Route path="/zapatos" element={<CategoriaZapatos />} />
+        <Route path="/accesorios" element={<CategoriaAccesorios />} />
+        <Route path="/ofertas" element={<Ofertas />} />
+        <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/contacto" element={<Contacto />} />
+      </Routes>
+
+      <Pagination />
+    </>
   );
 }
 

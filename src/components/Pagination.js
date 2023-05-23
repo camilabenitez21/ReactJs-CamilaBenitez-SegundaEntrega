@@ -1,21 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Pagination = () => {
-    return(
+  return (
+    <nav>
+      <ul className='pagination justify-content-center'>
+        <li className='page-item'>
+          <Link className='page-link' to='#'>Prev</Link>
+        </li>
+        <li className='page-item'>
+          <Link className='page-link' to='#'>Next</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
 
-        <nav>
-            <ul className='pagination justify-content-center'>
-                <li className='page-item'>
-                    <button className='page-link' >Prev</button>
-                </li>
-                <li className='page-item'>
-                    <button className='page-link' >Next</button>
-                </li>
-            </ul>
-        </nav>
-            )
-        };
-
-
-
-export default Pagination
+export default Pagination;
